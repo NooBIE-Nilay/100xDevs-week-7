@@ -3,9 +3,8 @@ import Button from "@mui/material/Button";
 
 import { useNavigate } from "react-router-dom";
 
-function Appbar(props) {
+function Appbar({ userEmail, setUserEmail }) {
   const navigate = useNavigate();
-  const userEmail = props.userEmail;
 
   if (userEmail) {
     return (
@@ -51,8 +50,8 @@ function Appbar(props) {
             <Button
               variant={"contained"}
               onClick={() => {
-                localStorage.setItem("token", null);
-                window.location = "/";
+                localStorage.removeItem("token");
+                setUserEmail(null);
               }}
             >
               Logout

@@ -32,7 +32,7 @@ function App() {
       style={{ width: "100vw", height: "100vh", backgroundColor: "#eeeeee" }}
     >
       <Router>
-        <Appbar userEmail={userEmail} />
+        <Appbar userEmail={userEmail} setUserEmail={setUserEmail} />
         <Routes>
           <Route path={"/addcourse"} element={<AddCourse />} />
           <Route path={"/course/:courseId"} element={<Course />} />
