@@ -4,11 +4,13 @@ import { Card, Typography } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../config.js";
+import { useNavigate } from "react-router-dom";
 
-function Signin() {
+function Signin(prop) {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const setUserEmail = prop.setUserEmail;
   return (
     <div>
       <div
@@ -67,7 +69,8 @@ function Signin() {
               const data = res.data;
 
               localStorage.setItem("token", data.token);
-              window.location = "/";
+              setUserEmail(email);
+              navigate("/");
             }}
           >
             Signin
